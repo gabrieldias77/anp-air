@@ -1,36 +1,43 @@
 /* =========================================================
    ANP Ar Condicionado — Estilos
-   Paleta derivada do logo: azul (claro → naval) + branco/cinza
+   Paleta derivada do logo: azul-marinho (navy) + vinho/bordô + branco/cinza
    ========================================================= */
 
 :root {
-  /* Cores da marca */
-  --blue-400: #36a9e0;
-  --blue-500: #1690d4;
-  --blue-600: #0e76bc;
-  --blue-700: #0a5a92;
-  --blue-800: #08416b;
-  --blue-900: #06293f;
-  --cyan: #16c2e0;
-  --ice: #eaf6fc;
-  --ice-2: #f4fafd;
+  /* Cores da marca — navy (estrutural) */
+  --blue-400: #7d8fe8;   /* periwinkle claro — somente sobre fundos escuros */
+  --blue-500: #283c93;
+  --blue-600: #1e2f78;
+  --blue-700: #17245d;
+  --blue-800: #101a45;
+  --blue-900: #0a1230;
+  --cyan: #4257b8;
+
+  /* Acento — vinho/bordô (do "A" e do "20 Anos" do logo) */
+  --wine-400: #c43a4e;   /* claro — sobre fundos escuros */
+  --wine-500: #a01428;
+  --wine-600: #7e0f1f;
+
+  --ice: #eef0fa;
+  --ice-2: #f6f7fc;
 
   --white: #ffffff;
   --slate-900: #0f2433;
   --slate-700: #2e4459;
   --slate-600: #51677a;
   --slate-400: #8aa0b3;
-  --line: #e3edf4;
+  --line: #e3e6f2;
 
   --whatsapp: #25d366;
   --whatsapp-dark: #1da851;
 
   --grad-brand: linear-gradient(135deg, var(--blue-500), var(--blue-700));
-  --grad-hero: linear-gradient(120deg, rgba(8, 65, 107, 0.92), rgba(14, 118, 188, 0.82));
+  --grad-accent: linear-gradient(135deg, var(--wine-500), var(--wine-600));
+  --grad-hero: linear-gradient(120deg, rgba(10, 18, 48, 0.93), rgba(30, 47, 120, 0.82));
 
-  --shadow-sm: 0 2px 8px rgba(8, 65, 107, 0.08);
-  --shadow-md: 0 10px 30px rgba(8, 65, 107, 0.12);
-  --shadow-lg: 0 22px 60px rgba(8, 65, 107, 0.18);
+  --shadow-sm: 0 2px 8px rgba(10, 18, 48, 0.08);
+  --shadow-md: 0 10px 30px rgba(10, 18, 48, 0.13);
+  --shadow-lg: 0 22px 60px rgba(10, 18, 48, 0.20);
 
   --radius: 16px;
   --radius-sm: 12px;
@@ -74,8 +81,8 @@ h1, h2, h3, h4 { font-family: var(--ff-head); color: var(--slate-900); line-heig
 .btn--lg { padding: 16px 32px; font-size: 1.05rem; }
 .btn--block { width: 100%; }
 
-.btn--primary { background: var(--grad-brand); color: #fff; box-shadow: var(--shadow-md); }
-.btn--primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.btn--primary { background: var(--grad-accent); color: #fff; box-shadow: 0 10px 30px rgba(160, 20, 40, 0.28); }
+.btn--primary:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(160, 20, 40, 0.38); }
 
 .btn--whatsapp { background: var(--whatsapp); color: #fff; box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35); }
 .btn--whatsapp:hover { background: var(--whatsapp-dark); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(37, 211, 102, 0.45); }
@@ -87,10 +94,10 @@ h1, h2, h3, h4 { font-family: var(--ff-head); color: var(--slate-900); line-heig
 .cta-band .btn--ghost { /* contexts where ghost sits on color handled individually */ }
 
 /* ---------- Top bar ---------- */
-.topbar { background: var(--blue-900); color: #cfe6f5; font-size: .85rem; }
+.topbar { background: var(--blue-900); color: #c8cfea; font-size: .85rem; }
 .topbar__inner { display: flex; align-items: center; justify-content: space-between; min-height: 40px; gap: 16px; }
 .topbar__contacts { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-.topbar__item { display: inline-flex; align-items: center; gap: 7px; color: #cfe6f5; transition: color .2s; }
+.topbar__item { display: inline-flex; align-items: center; gap: 7px; color: #c8cfea; transition: color .2s; }
 .topbar__item:hover { color: #fff; }
 .topbar__item svg { width: 15px; height: 15px; fill: var(--blue-400); }
 .topbar__social { display: flex; gap: 6px; }
@@ -110,8 +117,8 @@ h1, h2, h3, h4 { font-family: var(--ff-head); color: var(--slate-900); line-heig
 .header.scrolled .header__inner { min-height: 66px; }
 
 .brand { display: inline-flex; align-items: center; }
-.brand__logo { height: 52px; width: auto; border-radius: 8px; transition: height .3s; }
-.header.scrolled .brand__logo { height: 46px; }
+.brand__logo { height: 50px; width: auto; transition: height .3s; }
+.header.scrolled .brand__logo { height: 44px; }
 
 .nav { display: flex; align-items: center; gap: 6px; }
 .nav__link {
@@ -141,7 +148,7 @@ h1, h2, h3, h4 { font-family: var(--ff-head); color: var(--slate-900); line-heig
 /* ---------- Eyebrow ---------- */
 .eyebrow {
   display: inline-block; font-family: var(--ff-head); font-weight: 600; font-size: .82rem;
-  letter-spacing: .08em; text-transform: uppercase; color: var(--blue-600);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--wine-500);
   background: var(--ice); padding: 6px 14px; border-radius: 999px; margin-bottom: 18px;
 }
 .eyebrow--light { color: #fff; background: rgba(255,255,255,.16); backdrop-filter: blur(4px); }
@@ -156,17 +163,17 @@ h1, h2, h3, h4 { font-family: var(--ff-head); color: var(--slate-900); line-heig
 .hero__overlay { position: absolute; inset: 0; background: var(--grad-hero); }
 .hero__overlay::after {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(54,169,224,.35), transparent 55%);
+  background: radial-gradient(circle at 80% 20%, rgba(125,143,232,.32), transparent 55%);
 }
 .hero__inner { position: relative; z-index: 2; padding: 96px 24px 110px; }
 .hero__content { max-width: 720px; }
 .hero__title { font-size: clamp(2.1rem, 5vw, 3.5rem); color: #fff; font-weight: 800; letter-spacing: -.01em; }
 .hero__title span { color: var(--blue-400); }
-.hero__text { font-size: clamp(1.02rem, 2vw, 1.22rem); color: #e4f1fa; margin: 22px 0 32px; max-width: 620px; }
+.hero__text { font-size: clamp(1.02rem, 2vw, 1.22rem); color: #e7e9f6; margin: 22px 0 32px; max-width: 620px; }
 .hero__text strong { color: #fff; }
 .hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
 .hero__badges { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 38px; }
-.hero__badges li { display: inline-flex; align-items: center; gap: 9px; font-weight: 500; color: #eaf4fb; }
+.hero__badges li { display: inline-flex; align-items: center; gap: 9px; font-weight: 500; color: #eceefa; }
 .hero__badges svg { width: 20px; height: 20px; fill: var(--blue-400); flex-shrink: 0; }
 
 /* ---------- Stats ---------- */
@@ -195,7 +202,7 @@ h1, h2, h3, h4 { font-family: var(--ff-head); color: var(--slate-900); line-heig
 }
 .card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-  background: var(--grad-brand); transform: scaleX(0); transform-origin: left; transition: transform .3s;
+  background: var(--grad-accent); transform: scaleX(0); transform-origin: left; transition: transform .3s;
 }
 .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); border-color: transparent; }
 .card:hover::before { transform: scaleX(1); }
@@ -214,11 +221,11 @@ h1, h2, h3, h4 { font-family: var(--ff-head); color: var(--slate-900); line-heig
 .about__media { position: relative; }
 .about__media img { border-radius: var(--radius); box-shadow: var(--shadow-lg); aspect-ratio: 4/3; object-fit: cover; width: 100%; }
 .about__badge {
-  position: absolute; right: -14px; bottom: -22px; background: var(--grad-brand); color: #fff;
+  position: absolute; right: -14px; bottom: -22px; background: var(--grad-accent); color: #fff;
   border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow-md); max-width: 200px;
 }
 .about__badge-num { display: block; font-family: var(--ff-head); font-weight: 800; font-size: 2.2rem; line-height: 1; }
-.about__badge-text { display: block; font-size: .9rem; margin-top: 4px; color: #e4f1fa; }
+.about__badge-text { display: block; font-size: .9rem; margin-top: 4px; color: #f6dfe3; }
 .about__content .section__title { margin-bottom: 18px; }
 .about__content p { margin-bottom: 16px; }
 .about__content p strong { color: var(--slate-900); }
@@ -246,7 +253,7 @@ h1, h2, h3, h4 { font-family: var(--ff-head); color: var(--slate-900); line-heig
 .gallery__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 .gallery__item::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(6,41,63,.75), transparent 55%);
+  background: linear-gradient(to top, rgba(8,12,40,.78), transparent 55%);
   opacity: .85; transition: opacity .3s;
 }
 .gallery__item figcaption {
@@ -285,7 +292,7 @@ h1, h2, h3, h4 { font-family: var(--ff-head); color: var(--slate-900); line-heig
   gap: 32px; padding: 56px 24px; flex-wrap: wrap; color: #fff;
 }
 .cta-band h2 { color: #fff; font-size: clamp(1.5rem, 3vw, 2.1rem); }
-.cta-band p { color: #e4f1fa; margin-top: 8px; font-size: 1.08rem; }
+.cta-band p { color: #e7e9f6; margin-top: 8px; font-size: 1.08rem; }
 .cta-band__actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .cta-band .btn--ghost { border-color: rgba(255,255,255,.7); }
 .cta-band .btn--ghost:hover { background: #fff; color: var(--blue-700); }
@@ -317,7 +324,7 @@ a.contact__row:hover { transform: translateX(4px); box-shadow: var(--shadow-sm);
 }
 .field input::placeholder, .field textarea::placeholder { color: var(--slate-400); }
 .field input:focus, .field select:focus, .field textarea:focus {
-  outline: none; border-color: var(--blue-500); background: #fff; box-shadow: 0 0 0 4px rgba(22,144,212,.12);
+  outline: none; border-color: var(--blue-500); background: #fff; box-shadow: 0 0 0 4px rgba(40,60,147,.14);
 }
 .field textarea { resize: vertical; min-height: 110px; }
 .contact__form-note { text-align: center; font-size: .85rem; color: var(--slate-400); margin-top: 14px; }
@@ -334,20 +341,20 @@ a.contact__row:hover { transform: translateX(4px); box-shadow: var(--shadow-sm);
 .map__link svg { width: 18px; height: 18px; fill: var(--blue-600); }
 
 /* ---------- Footer ---------- */
-.footer { background: var(--blue-900); color: #b9d4e6; padding-top: 64px; }
+.footer { background: var(--blue-900); color: #b9c0e0; padding-top: 64px; }
 .footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1.3fr 1.3fr; gap: 40px; padding-bottom: 48px; }
 .footer__logo { height: 56px; width: auto; border-radius: 8px; background: #fff; padding: 6px; margin-bottom: 16px; }
-.footer__brand p { font-size: .95rem; color: #9fbdd2; max-width: 320px; }
+.footer__brand p { font-size: .95rem; color: #a3abcf; max-width: 320px; }
 .footer__social { display: flex; gap: 10px; margin-top: 18px; }
 .footer__social a { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,.08); display: grid; place-items: center; transition: background .2s, transform .2s; }
 .footer__social a:hover { background: var(--blue-500); transform: translateY(-3px); }
 .footer__social svg { width: 19px; height: 19px; fill: #fff; }
 .footer__col h4 { color: #fff; font-size: 1.05rem; margin-bottom: 18px; }
-.footer__col a, .footer__col span { display: block; color: #9fbdd2; font-size: .95rem; margin-bottom: 10px; transition: color .2s, padding-left .2s; }
+.footer__col a, .footer__col span { display: block; color: #a3abcf; font-size: .95rem; margin-bottom: 10px; transition: color .2s, padding-left .2s; }
 .footer__col a:hover { color: #fff; padding-left: 4px; }
 .footer__bottom { border-top: 1px solid rgba(255,255,255,.1); padding: 22px 0; }
 .footer__bottom .container { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.footer__bottom p { font-size: .88rem; color: #80a3bb; }
+.footer__bottom p { font-size: .88rem; color: #838cba; }
 
 /* ---------- Floating WhatsApp ---------- */
 .wa-float {
@@ -378,7 +385,7 @@ a.contact__row:hover { transform: translateX(4px); box-shadow: var(--shadow-sm);
 
 /* ---------- Lightbox ---------- */
 .lightbox {
-  position: fixed; inset: 0; z-index: 200; background: rgba(6,25,40,.94);
+  position: fixed; inset: 0; z-index: 200; background: rgba(8,10,30,.95);
   display: flex; align-items: center; justify-content: center; padding: 30px;
   opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s;
 }
@@ -431,10 +438,10 @@ a.contact__row:hover { transform: translateX(4px); box-shadow: var(--shadow-sm);
     color: var(--blue-700); font-size: 1.9rem; line-height: 1; cursor: pointer; padding: 0;
     transition: background .2s;
   }
-  .nav__close:hover { background: #d8edf7; }
+  .nav__close:hover { background: #dfe3f5; }
 
   .nav-backdrop {
-    display: block; position: fixed; inset: 0; z-index: 94; background: rgba(6, 25, 40, .55);
+    display: block; position: fixed; inset: 0; z-index: 94; background: rgba(8, 10, 30, .6);
     opacity: 0; visibility: hidden; transition: opacity .35s, visibility .35s;
   }
   .nav-backdrop.open { opacity: 1; visibility: visible; }
