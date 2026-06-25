@@ -216,6 +216,28 @@ h1, h2, h3, h4 { font-family: var(--ff-head); color: var(--slate-900); line-heig
 .card__title { font-size: 1.18rem; margin-bottom: 10px; }
 .card__text { font-size: .96rem; color: var(--slate-600); }
 
+/* ---------- Missão, Visão e Valores ---------- */
+.mvv { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+.mvv .card { padding: 38px 30px; }
+.mvv .card::before { transform: scaleX(1); }   /* acento vinho sempre visível */
+.mvv__values { margin: 4px 0 0; gap: 14px; }
+.mvv__values li { align-items: flex-start; color: var(--slate-600); font-weight: 400; }
+.mvv__values li strong { color: var(--slate-900); font-weight: 600; }
+@media (max-width: 880px) {
+  .mvv { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+}
+
+/* ---------- Áreas de atuação ---------- */
+.areas { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.area {
+  display: flex; align-items: center; gap: 12px;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 14px 18px; font-family: var(--ff-head); font-weight: 500; font-size: .96rem;
+  color: var(--slate-700); transition: transform .2s, box-shadow .2s, border-color .2s, color .2s;
+}
+.area::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--grad-accent); flex-shrink: 0; }
+.area:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); border-color: transparent; color: var(--blue-700); }
+
 /* ---------- About ---------- */
 .about { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: center; }
 .about__media { position: relative; }
