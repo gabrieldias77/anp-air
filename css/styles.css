@@ -293,12 +293,12 @@ h1, h2, h3, h4 { font-family: var(--ff-head); color: var(--slate-900); line-heig
 }
 .client {
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 30px 44px; display: grid; place-items: center; flex: 1 1 220px; max-width: 320px;
-  min-height: 130px; box-shadow: var(--shadow-sm); transition: transform .3s, box-shadow .3s;
+  padding: 30px 44px; display: grid; place-items: center; flex: 1 1 260px; max-width: 360px;
+  min-height: 170px; box-shadow: var(--shadow-sm); transition: transform .3s, box-shadow .3s;
 }
 .client:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
 .client img {
-  max-height: 56px; width: auto; object-fit: contain;
+  max-height: 96px; max-width: 100%; width: auto; object-fit: contain;
   filter: grayscale(100%); opacity: .65; transition: filter .35s, opacity .35s;
 }
 .client:hover img { filter: grayscale(0); opacity: 1; }
