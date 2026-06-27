@@ -116,33 +116,53 @@
     sections.forEach(function (s) { spy.observe(s); });
   }
 
-  /* ---------- Lightbox da galeria ---------- */
-  var items = Array.prototype.slice.call(document.querySelectorAll('.gallery__item'));
+  /* ---------- Lightbox (galeria de trabalhos + cases) ---------- */
   var lb = document.getElementById('lightbox');
   var lbImg = document.getElementById('lbImg');
   var lbCaption = document.getElementById('lbCaption');
   var lbClose = document.getElementById('lbClose');
   var lbPrev = document.getElementById('lbPrev');
   var lbNext = document.getElementById('lbNext');
+  var group = [];
   var current = 0;
 
   function showLb(i) {
-    if (!items.length) return;
-    current = (i + items.length) % items.length;
-    var item = items[current];
-    var img = item.querySelector('img');
-    var cap = item.querySelector('figcaption');
-    lbImg.src = img.src;
-    lbImg.alt = img.alt;
-    lbCaption.textContent = cap ? cap.textContent : '';
+    if (!group.length) return;
+    current = (i + group.length) % group.length;
+    var it = group[current];
+    lbImg.src = it.src;
+    lbImg.alt = it.alt || '';
+    lbCaption.textContent = it.cap || '';
   }
-  function openLb(i) { showLb(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+  function openLb(arr, i) {
+    group = arr;
+    showLb(i);
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
   function closeLb() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
 
   if (lb) {
-    items.forEach(function (item, i) {
-      item.addEventListener('click', function () { openLb(i); });
+    /* Galeria de trabalhos */
+    var galleryItems = Array.prototype.slice.call(document.querySelectorAll('.gallery__item'));
+    var galleryGroup = galleryItems.map(function (item) {
+      var img = item.querySelector('img');
+      var cap = item.querySelector('figcaption');
+      return { src: img.src, alt: img.alt, cap: cap ? cap.textContent : '' };
     });
+    galleryItems.forEach(function (item, i) {
+      item.addEventListener('click', function () { openLb(galleryGroup, i); });
+    });
+
+    /* Cases de sucesso — cada card abre a galeria da sua obra */
+    document.querySelectorAll('.case').forEach(function (card) {
+      var shots = Array.prototype.slice.call(card.querySelectorAll('.case__shots span')).map(function (s) {
+        return { src: s.getAttribute('data-src'), alt: s.getAttribute('data-alt'), cap: s.getAttribute('data-cap') };
+      });
+      card.addEventListener('click', function () { if (shots.length) openLb(shots, 0); });
+    });
+
     lbClose.addEventListener('click', closeLb);
     lbPrev.addEventListener('click', function () { showLb(current - 1); });
     lbNext.addEventListener('click', function () { showLb(current + 1); });
